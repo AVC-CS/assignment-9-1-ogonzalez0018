@@ -1,87 +1,54 @@
 #include <iostream>
-#include <fstream>
-#include <string>
-#include <cstring>
-#include <sstream>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
-struct Name
+struct Node
 {
-    string first;
-    string last;
-};
-struct Bdate
-{
-    int year;
-    int month;
-    int day;
-};
-struct Person
-{
-    int no;
-    string ID;
-    Name name;
-    string email;
-    string gender;
-    string phone;
-    Bdate bdate;
-    string jobtitle;
+    double value;
+    struct Node *next;
 };
 
-void makePerson(vector<Person> &);
-void printPerson(vector<Person>);
-void writeFile(vector<Person>);
-Person *getRecord(int);
+struct Node *makeNumbers(int N);
+void printNumbers(struct Node *head);
+int getLength(struct Node *head);
+struct Node *sortNumbers(struct Node *head);
+struct Node *swapNode(struct Node *prev, struct Node *ptr);
 
-void makePerson(vector<Person> &person)
+struct Node *makeNumbers(int N)
 {
     /*******************************
      * Code your program here
      *******************************/
 }
-void printPerson(vector<Person> person)
+void printNumbers(struct Node *head)
 {
-    vector<Person>::iterator it;
-    printf("NO\tID\t\tName\t\t\tEmail\t\tPhone\t\t\tBirthday\t\t\t\tJobtitle\n");
-    for (it = person.begin(); it != person.end(); it++)
+    struct Node *ptr = head;
+    while (ptr != NULL)
     {
-        cout << it->no << "\t";
-        cout << it->ID << "\t";
-        cout << it->name.first << " " << it->name.last << "\t";
-        cout << it->email << "\t";
-        cout << it->phone << "\t";
-        cout << it->bdate.year << "\t"
-             << it->bdate.month << "\t"
-             << it->bdate.day << "\t";
-        cout << it->jobtitle << endl;
+        cout << ptr->value << "\t";
+        ptr = ptr->next;
     }
-    cout << "**************************************************\n";
+    cout << endl;
+    /*******************************
+     * Code your program here
+     *******************************/
 }
-void printOnePerson(Person person)
-{
-    printf("NO\tID\t\tName\t\t\tEmail\t\tPhone\t\t\tBirthday\t\t\t\tJobtitle\n");
-    cout << person.no << "\t";
-    cout << person.ID << "\t";
-    cout << person.name.first << " " << person.name.last << "\t";
-    cout << person.email << "\t";
-    cout << person.phone << "\t";
-    cout << person.bdate.year << "\t"
-         << person.bdate.month << "\t"
-         << person.bdate.day << "\t";
-    cout << person.jobtitle << endl;
-    cout << "**************************************************\n";
-}
-void writeFile(vector<Person> person)
+int getLength(struct Node *head)
 {
     /*******************************
      * Code your program here
      *******************************/
 }
-Person *getRecord(int number)
+struct Node *sortNumbers(struct Node *head)
 {
-    Person *p;
     /*******************************
      * Code your program here
      *******************************/
+}
 
-    return p;
+struct Node *swapNode(struct Node *prev, struct Node *ptr)
+{
+    /*******************************
+     * Code your program here
+     *******************************/
 }

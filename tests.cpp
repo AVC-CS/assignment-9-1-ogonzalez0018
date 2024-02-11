@@ -7,55 +7,24 @@
 
 TEST_CASE("Ex1 ", "[example]")
 {
-	vector<Person> person;
+	struct Node *head, *tmp;
 	int length;
 
-	makePerson(person);
+	head = makeNumbers(10);
+	struct Node *ptr = head;
 
-	REQUIRE(person.size() == 100);
-	printPerson(person);
+	length = getLength(head);
+	cout << "The length of the list " << length << endl;
+	REQUIRE(length == 10);
+	printNumbers(head);
+	head = sortNumbers(head);
+	printNumbers(head);
+	tmp = head;
+	for (int i = 0; i < length - 1; i++)
+	{
+		REQUIRE(tmp->value <= tmp->next->value);
+		tmp = tmp->next;
+	}
 	cout << "--------------------------------------------------\n";
-}
-
-TEST_CASE("Ex2 ", "[example]")
-{
-	vector<Person> person;
-	int length;
-	fstream ifs;
-	Person p;
-	unsigned long offset;
-	Person *ptr;
-
-	makePerson(person);
-	writeFile(person);
-	/****************************************************/
-	ptr = getRecord(20);
-	REQUIRE(ptr->no == 20);
-
-	/****************************************************/
-	ifs.open("Person.bin", ios::binary | ios::in);
-	REQUIRE(!(ifs) == false);
-
-	ifs.read((char *)&p, sizeof(Person));
-	printOnePerson(p);
-	REQUIRE(p.no == 1);
-	/****************************************************/
-	offset = sizeof(Person) * (50 - 1);
-	ifs.seekg(offset, ios::beg);
-	cout << sizeof(Person) << endl;
-	cout << ifs.tellg() << endl;
-	ifs.read((char *)&p, sizeof(Person));
-	printOnePerson(p);
-	REQUIRE(p.no == 50);
-	/****************************************************/
-	offset = 0;
-	ifs.seekg(offset, ios::beg);
-	// cout << ifs.tellg() << endl;
-	ifs.read((char *)&p, sizeof(Person));
-	cout << p.email << "Email " << endl;
-	printOnePerson(p);
-	REQUIRE(p.name.first == "Louis");
 	cout << "--------------------------------------------------\n";
-	/****************************************************/
-	ifs.close();
 }
